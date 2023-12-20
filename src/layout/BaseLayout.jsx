@@ -7,7 +7,7 @@ const BaseLayout = () => {
     return (
         <>
             <div className="bg-[#ebf0f4]">
-                <Header />
+                {/* <Header /> */}
                 <Outlet />
                 <Footer />
             </div>

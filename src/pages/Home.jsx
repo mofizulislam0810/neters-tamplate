@@ -1,102 +1,69 @@
 import React from 'react'
-import { Button } from '../components'
+import { Button, PersonWithText, TextWithIcon } from '../components'
 import layer_img_01 from '../utils/images/discover/1.png'
 import layer_img_02 from '../utils/images/discover/2.png'
 import layer_img_03 from '../utils/images/discover/3.png'
 import person from '../utils/images/discover/person.png'
 import groupImg from '../utils/images/discover/Group 83.png'
+import { subscriptions } from '../constants'
 
 const Home = () => {
   return (
     <div className="mx-auto px-4 sm:px-6 lg:px-[10%]">
       <div className='grid gap-5 lg:grid-cols-2 grid-cols-1 my-10 py-10'>
         <div>
-          <p className='text-[40px]  font-black pb-5'>
-            DISCOVER, AND COLLECT DIGITAL ART NFTS
-          </p>
-          <p className='text-[#565656] text-xl pb-10 font-Sans'>Digital marketplace for crypto collectibles and non-fungible tokens (NFTs). Buy, Sell, and discover exclusive digital assets.</p>
-
+          <p className='text-4xl font-black pb-5 text-black leading-none'>DISCOVER, AND COLLECT DIGITAL ART NFTS </p>
+          <p className='text-[#565656] text-2xl pb-10 leading-8'>Digital marketplace for crypto collectibles and non-fungible tokens (NFTs). Buy, Sell, and discover exclusive digital assets.</p>
           <div className='pb-10'>
-            <Button type={"submit"} btnName={"Explore Now"} size={"w-30 py-3"} bg={true} />
+            <Button type={"submit"} btnName={"Explore Now"} size={"w-34 py-4"} bg={true} />
           </div>
           <div className='flex flex-wrap items-center gap-6'>
-            <div>
-              <p className='text-[40px]  font-black leading-8'>98k+</p>
-              <p className='text-xl'>Artwork</p>
-            </div>
-            <div>
-              <p className='text-[40px]  font-black leading-8'>120k+</p>
-              <p className='text-xl'>Artwork</p>
-            </div>
-            <div>
-              <p className='text-[40px] font-black leading-8'>98k+</p>
-              <p className='text-xl'>Artwork</p>
-            </div>
+            {
+              subscriptions?.map((item, idx) =>
+                <div key={idx}>
+                  <p className='text-4xl font-black leading-10 tracking-wider'>{item?.amount}</p>
+                  <p className='text-lg text-[#565656]'>{item?.name}</p>
+                </div>)
+            }
           </div>
-
         </div>
+
+
         <div className='flex justify-end items-center md:justify-center'>
-          <div className="z-20 mr-[-50%] md:mr-[-40%] lg:mr-[-50%] relative">
+          <div className="relative">
             <img src={layer_img_03} className="w-full h-full " alt="layer-img-03" />
-            <div className='absolute top-8 left-10'>
-              <p className=' text-2xl text-white'>Abstr Gradient NFT</p>
-              <div className='flex gap-2 items-center py-2'>
-                <img src={person} className="w-10 h-10 rounded-full" alt="person" />
-                <p className='text-xl text-white'>
-                  Arkhan17
-                </p>
-              </div>
+            <div className='absolute top-8 left-8'>
+              <p className='text-3xl text-white font-bold'>Abstr Gradient NFT</p>
+              <PersonWithText img={person} text={"Arkhan17"} />
             </div>
 
-            <div className='absolute top-1/2 -left-16'>
+            <div className='absolute bottom-20 -left-16 hidden md:block'>
               <img src={groupImg} alt="group_img" className='w-30 h-30' />
             </div>
 
-            <div className='absolute bottom-8 left-10 w-[75%] flex flex-wrap justify-between bg-[#e5e7eb24] rounded-lg p-3'>
-              <div>
-                <p className=' text-base text-white'>Current Bid</p>
-                <div className='flex gap-2 items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
-                    <g clip-path="url(#clip0_0_143)">
-                      <path d="M12.671 11.3796L6.50006 15.2463L0.325058 11.3796L6.50006 0.512939L12.671 11.3796ZM6.50006 16.4879L0.325058 12.6213L6.50006 21.8463L12.6751 12.6213L6.50006 16.4879Z" fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_0_143">
-                        <rect width="13" height="21.3333" fill="white" transform="translate(0 0.512939)" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  <p className='text-sm text-white'>
-                    0.25 ETH
-                  </p>
-                </div>
+            <div className='absolute bottom-6 left-0 w-full'>
+              <div className='flex flex-wrap justify-between bg-[#e5e7eb24] rounded-lg p-4 mx-5'>
+                <TextWithIcon header={"Current Bid"} icon={<svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+                  <g clip-path="url(#clip0_0_143)">
+                    <path d="M12.671 11.3796L6.50006 15.2463L0.325058 11.3796L6.50006 0.512939L12.671 11.3796ZM6.50006 16.4879L0.325058 12.6213L6.50006 21.8463L12.6751 12.6213L6.50006 16.4879Z" fill="white" />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_0_143">
+                      <rect width="13" height="21.3333" fill="white" transform="translate(0 0.512939)" />
+                    </clipPath>
+                  </defs>
+                </svg>} text={"0.25 ETH"} />
+                <TextWithIcon header={"Ends in"} text={"12h 43m 42s"} />
               </div>
-              <div>
-                <p className=' text-base text-white'>Current Bid</p>
-                <div className='flex gap-2 items-center'>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
-                    <g clip-path="url(#clip0_0_143)">
-                      <path d="M12.671 11.3796L6.50006 15.2463L0.325058 11.3796L6.50006 0.512939L12.671 11.3796ZM6.50006 16.4879L0.325058 12.6213L6.50006 21.8463L12.6751 12.6213L6.50006 16.4879Z" fill="white" />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_0_143">
-                        <rect width="13" height="21.3333" fill="white" transform="translate(0 0.512939)" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                  <p className='text-sm text-white'>
-                    0.25 ETH
-                  </p>
-                </div>
-              </div>
+
             </div>
           </div>
-          <div className="z-10 mr-[-40%] md:mr-[-35%] lg:mr-[-45%] "><img src={layer_img_02} alt="layer-img-02" /></div>
-          <div className="z-0"><img src={layer_img_01} alt="layer-img-01" /></div>
+          {/* <div className="z-10 mr-[-55%] md:mr-[-35%] lg:mr-[-47%] "><img src={layer_img_02} alt="layer-img-02" /></div>
+          <div className="z-0"><img src={layer_img_01} alt="layer-img-01" /></div> */}
         </div>
       </div>
 
-      <div className='grid gap-2 lg:grid-cols-3 grid-cols-1 my-10 py-10'>
+      {/* <div className='grid gap-2 lg:grid-cols-3 grid-cols-1 my-10 py-10'>
         <div>
           <img src={layer_img_01} alt="name" className='w-full h-full' />
           <div className='flex flex-wrap justify-between'>
@@ -534,7 +501,7 @@ const Home = () => {
 
         </div>
 
-      </div>
+      </div> */}
     </div>
   )
 }
