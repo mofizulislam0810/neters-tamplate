@@ -9,7 +9,8 @@ module.exports = {
       'primary' : '#3D00B7',
       'secondary' : '#ECECEC',
       'tertiary' : '#565656',
-      'green' : "#00AC4F"
+      'green' : "#00AC4F",
+      'gray' : '#D9E0EC33'
     },
     fontFamily: {
       serif: ['Merriweather', 'serif'],

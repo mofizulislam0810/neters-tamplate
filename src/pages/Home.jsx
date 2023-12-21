@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, PersonWithText, TextWithIcon } from '../components'
-import { amazingNetArt, images, live_acrion_images, profileImage, subscriptions, topCollectionsBigImages, topCollectionsOver } from '../constants'
+import { amazingNetArt, cardData, collectionFeatured, images, live_acrion_images, profileImage, subscriptions, topCollectionsBigImages, topCollectionsOver } from '../constants'
 
 const Home = () => {
   const commonStyle = "grid-cols-1 my-10 py-10 mx-auto px-4 sm:px-6 lg:px-[10%]"
@@ -41,7 +41,7 @@ const Home = () => {
       </div>
 
       {/* The amazing NFT art of the world here */}
-      <div className='bg-[#D9E0EC33]'>
+      <div className='bg-gray'>
         <div className={`grid gap-10 lg:grid-cols-3 ${commonStyle}`}>
           <div>
             <p className='text-3xl text-black font-black pb-5 leading-none'> THE AMAZING NET ART OF THE WORLD HERE</p>
@@ -74,7 +74,7 @@ const Home = () => {
             <PersonWithText img={profileImage[0]} text={"The Futr Abstr"} subtext={"10 in the stock"} color={"text-black font-bold"} />
 
             <TextWithIcon header={"Highest Bid"} icon={<svg xmlns="http://www.w3.org/2000/svg" width="15" height="16" viewBox="0 0 15 24" fill="none">
-              <g clip-path="url(#clip0_0_267)">
+              <g clipPath="url(#clip0_0_267)">
                 <path d="M14.6203 12.225L7.49994 16.575L0.374939 12.225L7.49994 0L14.6203 12.225ZM7.49994 17.9719L0.374939 13.6219L7.49994 24L14.6249 13.6219L7.49994 17.9719Z" fill="black" />
               </g>
               <defs>
@@ -100,7 +100,7 @@ const Home = () => {
                         <img src={profileImage[0]} className="w-10 h-10 rounded-full" alt="person" />
                         <div className='flex gap-1 items-center border-2 px-3 py-1 rounded-lg border-green font-bold text-green'>
                           <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-                            <g clip-path="url(#clip0_0_224)">
+                            <g clipPath="url(#clip0_0_224)">
                               <path d="M8.31533 7.13126L4.26566 9.66876L0.213318 7.13126L4.26566 0L8.31533 7.13126ZM4.26566 10.4836L0.213318 7.9461L4.26566 14L8.318 7.9461L4.26566 10.4836Z" fill="#00AC4F" />
                             </g>
                             <defs>
@@ -138,7 +138,7 @@ const Home = () => {
                       <p className="text-base font-bold pb-1">{item?.text}</p>
                       <div className='flex gap-3 items-start'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="24" viewBox="0 0 15 24" fill="none">
-                          <g clip-path="url(#clip0_0_267)">
+                          <g clipPath="url(#clip0_0_267)">
                             <path d="M14.6203 12.225L7.49994 16.575L0.374939 12.225L7.49994 0L14.6203 12.225ZM7.49994 17.9719L0.374939 13.6219L7.49994 24L14.6249 13.6219L7.49994 17.9719Z" fill="black" />
                           </g>
                           <defs>
@@ -160,28 +160,118 @@ const Home = () => {
       </div>
 
       {/* Collection Featured NFTs */}
-      <div className='bg-[#D9E0EC33]'>
+      <div className='bg-gray'>
         <p className={`text-4xl text-black font-black leading-none ${commonStyle}`}>COLLECTION FEATURED NFT</p>
         <div className={`grid gap-5 lg:grid-cols-3 mx-auto px-4 sm:px-6 lg:px-[10%]`}>
           {
-            [1, 2, 3].map(item => {
+            collectionFeatured?.map((item, idx) => {
               return (
-                <div>
+                <div key={idx}>
                   <div className='grid gap-3 lg:grid-cols-3 grid-cols-1'>
                     <div className='lg:col-span-2'>
-                      <img className='w-full h-[300px]' src={images.image_one} alt="layer-img-01" />
+                      <img className='w-full h-[300px]' src={item.bigImages} alt="layer-img-01" />
+
                     </div>
                     <div className='grid grid-cols-1 gap-2 items-center'>
-                      <img className='w-full h-[95px]' src={images.image_one} alt="layer-img-01" />
-                      <img className='w-full h-[95px]' src={images.image_one} alt="layer-img-01" />
-                      <img className='w-full h-[95px]' src={images.image_one} alt="layer-img-01" />
+                      <img className='w-full h-[95px]' src={item.imageOne} alt="layer-img-01" />
+                      <img className='w-full h-[95px]' src={item.imageTwo} alt="layer-img-01" />
+                      <img className='w-full h-[95px]' src={item.imageThree} alt="layer-img-01" />
                     </div>
                   </div>
-                  <div className='py-6'>
-                    <p className='text-xl font-bold leading-3'>Amazing Collection</p>
-                    <div className='flex flex-wrap justify-between'>
-                      <PersonWithText img={profileImage[0]} text={"by Arkhan"} color={"text-black text-xs"} />
+                  <div className='py-5 flex flex-wrap justify-between items-center'>
+                    <div>
+                      <p className='text-xl font-bold leading-3'>Amazing Collection</p>
+                      <div className='flex gap-2 items-center py-2'>
+                        <div className='rounded-full p-1'>
+                          <img src={profileImage[0]} className="w-10 h-10" alt="person" />
+                        </div>
+                        <div>
+                          <p className="text-black text-xs">by Arkhan</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
                       <Button type={"submit"} btnName={"Total 54 Items"} size={"w-30"} bg={false} />
+                    </div>
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+
+
+      {/* CREATE AND SELL YOUR NFTS */}
+      <div className={`grid gap-5 items-center justify-between lg:grid-cols-2 grid-cols-1 ${commonStyle}`}>
+
+        {/* left position */}
+        <div className='grid gap-6 items-center justify-center lg:grid-flow-col lg:grid-cols-2 grid-cols-1 my-10 py-10'>
+          <div>
+            <SellNets img={images.image_one} profileImage={profileImage[0]} size={'w-full h-full'} />
+          </div>
+          <div>
+            <SellNets img={images.image_two} profileImage={profileImage[1]} size={'w-[200px] h-full'} position={"flex justify-end"} />
+          </div>
+          <div className="lg:row-span-2">
+            <SellNets img={images.image_three} profileImage={profileImage[1]} size={'w-full h-full'} />
+          </div>
+        </div>
+
+        {/* right position */}
+        <div>
+          <p className='text-3xl font-black pb-5'>CREATE AND SELL YOUR NFTS
+          </p>
+          <p className='text-base text-tertiary  pb-10 font-Sans'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Facilisi ac phasellus placerat a pellentesque tellus sed egestas. Et tristique dictum sit tristique sed non. Lacinia lorem id consectetur pretium diam ut. Pellentesque eu sit blandit fringilla risus faucibus.</p>
+          <div className='pb-10'>
+            <Button type={"submit"} btnName={"Sign Up Now"} size={"w-30 py-3"} bg={true} />
+          </div>
+        </div>
+
+      </div>
+
+      {/* Card Option */}
+      <div className='bg-gray'>
+        <p className={`text-4xl text-black font-black leading-none ${commonStyle}`}>DISCOVER MORE NETS</p>
+        <div className='grid gap-5 lg:grid-cols-4 grid-cols-1 my-10 py-10 mx-auto px-4 sm:px-6 lg:px-[10%]'>
+          {
+            cardData?.map((item, idx) => {
+              return (
+                <div className="w-full flex-shrink-0 relative overflow-hidden bg-white rounded-xl shadow-lg" key={idx}>
+                  <div className='p-2'>
+                    <div className="relative flex items-center justify-center">
+                      <img className="rounded-xl object-cover h-72 w-72" src={item.image} alt="sepcial images" />
+                      <div className='absolute -bottom-5 left-5 flex'>
+                        <div className="z-0 -mr-3"><img src={profileImage[0]} className="w-10 h-10 rounded-full" alt="person" /></div>
+                        <div className="z-10 -mr-3"><img src={profileImage[1]} className="w-10 h-10 rounded-full" alt="person" /></div>
+                        <div className="z-20 -mr-3"><img src={profileImage[2]} className="w-10 h-10 rounded-full" alt="person" /></div>
+                        <div className="z-30 -mr-3"><img src={profileImage[3]} className="w-10 h-10 rounded-full" alt="person" /></div>
+                      </div>
+                    </div>
+                    <div className="relative mt-6 px-2">
+                      <div className="flex justify-between items-center py-3">
+                        <div>
+                          <p className="text-base font-bold text-black">{item.header}</p>
+                          <div className='flex gap-3 items-center text-green font-bold py-1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
+                              <g clipPath="url(#clip0_402_127)">
+                                <path d="M9.24746 8.15568L4.80473 10.9395L0.35907 8.15568L4.80473 0.332275L9.24746 8.15568ZM4.80473 11.8334L0.35907 9.04961L4.80473 15.6911L9.25038 9.04961L4.80473 11.8334V11.8334Z" fill="#00AC4F" />
+                              </g>
+                              <defs>
+                                <clipPath id="clip0_402_127">
+                                  <rect width="9.35928" height="15.3588" fill="white" transform="translate(0.125 0.332275)" />
+                                </clipPath>
+                              </defs>
+                            </svg>
+                            <p className="text-sm text-green">0.25 ETH</p>
+                          </div>
+                        </div>
+                        <span className="block font-semibold text-xs text-tertiary">1 of 321</span>
+                      </div>
+                      <div className="flex justify-between border-t-2 py-3 text-primary">
+                        <span className="bg-secondary rounded-full text-xs font-bold px-3 py-2 leading-none flex items-center">3h 50m 2s left</span>
+                        <span className="block font-semibold text-lg">Place a bid</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -192,88 +282,6 @@ const Home = () => {
 
         </div>
       </div>
-
-
-      {/* CREATE AND SELL YOUR NFTS */}
-      {/* <div className='grid gap-5 items-center justify-between lg:grid-cols-2 grid-cols-1 my-10 py-10 mx-auto px-4 sm:px-6 lg:px-[10%]'>
-        <div className='grid gap-5 items-center justify-center lg:grid-flow-col lg:grid-cols-2 grid-cols-1 my-10 py-10'>
-          <div>
-            <div className='relative'>
-              <img src={layer_img_01} alt="name" className='w-full h-full' />
-              <img src={person} className="w-10 h-10 rounded-full absolute -bottom-3 -right-3 " alt="person" />
-            </div>
-
-
-          </div>
-          <div>
-            <div className='relative'>
-              <img src={layer_img_01} alt="name" className='w-full h-full' />
-              <img src={person} className="w-10 h-10 rounded-full absolute -bottom-3 -right-3 " alt="person" />
-            </div>
-
-
-          </div>
-          <div class="lg:row-span-2"> <div className='relative'>
-            <img src={layer_img_01} alt="name" className='w-full h-full' />
-            <img src={person} className="w-10 h-10 rounded-full absolute -bottom-3 -right-3 " alt="person" />
-          </div></div>
-        </div>
-        <div>
-          <p className='text-3xl font-black pb-5'>CREATE AND SELL YOUR NFTS
-          </p>
-          <p className='text-[#565656] text-xl pb-10 font-Sans'>Digital marketplace for crypto collectibles and non-fungible tokens (NFTs). Buy, Sell, and discover exclusive digital assets.</p>
-
-          <div className='pb-10'>
-            <Button type={"submit"} btnName={"Explore Now"} size={"w-30 py-3"} bg={true} />
-          </div>
-        </div>
-
-      </div> */}
-
-      {/* Card Option */}
-      {/* <div className='grid gap-5 lg:grid-cols-4 grid-cols-1 my-10 py-10 mx-auto px-4 sm:px-6 lg:px-[10%]'>
-        {
-          [1,2,3,4,5,6,7,8,9].map(item=>{
-            return(
-              <div className="w-full flex-shrink-0 relative overflow-hidden bg-white rounded-xl shadow-lg">
-              <div className='p-2'>
-                <div className="relative flex items-center justify-center">
-                  <img className=" rounded-xl object-cover h-72 w-full" src={layer_img_01} alt="sepcial images" />
-                  <div className='absolute -bottom-5 left-5 flex'>
-                    <div class="z-0 -mr-3"><img src={person} className="w-10 h-10 rounded-full" alt="person" /></div>
-                    <div class="z-10 -mr-3"><img src={person} className="w-10 h-10 rounded-full" alt="person" /></div>
-                    <div class="z-20 -mr-3"><img src={person} className="w-10 h-10 rounded-full" alt="person" /></div>
-                    <div class="z-30 -mr-3"><img src={person} className="w-10 h-10 rounded-full" alt="person" /></div>
-                  </div>
-                </div>
-                <div className="relative pb-6 mt-6 text-primary px-2">
-                  <div className="flex justify-between items-center py-3">
-                    <TextWithIcon header={"ArtCrypto"} icon={<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
-                      <g clip-path="url(#clip0_402_127)">
-                        <path d="M9.24746 8.15568L4.80473 10.9395L0.35907 8.15568L4.80473 0.332275L9.24746 8.15568ZM4.80473 11.8334L0.35907 9.04961L4.80473 15.6911L9.25038 9.04961L4.80473 11.8334V11.8334Z" fill="#00AC4F" />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_402_127">
-                          <rect width="9.35928" height="15.3588" fill="white" transform="translate(0.125 0.332275)" />
-                        </clipPath>
-                      </defs>
-                    </svg>} text={"0.25 ETH"} color={"text-[#00AC4F]"} />
-                    <span className="block font-semibold text-sm">1 of 321</span>
-                  </div>
-                  <div className="flex justify-between border-t-2 py-3">
-                    <span className="bg-secondary rounded-full text-primary text-xs font-bold px-3 py-2 leading-none flex items-center">3h 50m 2s left</span>
-                    <span className="block font-semibold text-xl">Place a bid</span>
-                  </div>
-                </div>
-              </div>
-    
-            </div>
-            )
-          })
-        }
-      
-
-      </div> */}
     </div>
   )
 }
@@ -295,7 +303,7 @@ const DiscoverImageFooter = () => {
     <div className='absolute bottom-6 left-0 w-full'>
       <div className='flex flex-wrap justify-between bg-[#e5e7eb24] rounded-lg p-4 mx-6'>
         <TextWithIcon header={"Current Bid"} icon={<svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
-          <g clip-path="url(#clip0_0_143)">
+          <g clipPath="url(#clip0_0_143)">
             <path d="M12.671 11.3796L6.50006 15.2463L0.325058 11.3796L6.50006 0.512939L12.671 11.3796ZM6.50006 16.4879L0.325058 12.6213L6.50006 21.8463L12.6751 12.6213L6.50006 16.4879Z" fill="white" />
           </g>
           <defs>
@@ -306,6 +314,15 @@ const DiscoverImageFooter = () => {
         </svg>} text={"0.25 ETH"} color={"text-white font-bold"} />
         <TextWithIcon header={"Ends in"} text={"12h 43m 42s"} color={"text-white font-bold"} />
       </div>
+    </div>
+  )
+}
+
+const SellNets = ({ img, profileImage, size, position }) => {
+  return (
+    <div className={`relative ${position}`}>
+      <img src={img} alt="name" className={size} />
+      <img src={profileImage} className="w-18 h-18 rounded-full absolute -bottom-5 -right-5" alt="person" />
     </div>
   )
 }

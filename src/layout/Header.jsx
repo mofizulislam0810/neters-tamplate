@@ -5,7 +5,7 @@ import { Button, SearchBox } from '../components'
 
 const Header = () => {
     return (
-        <nav className="bg-white to-blue-500 w-full">
+        <nav className="bg-white to-blue-500 w-full border-b-2 boder-tertary py-2">
             <div className="mx-auto px-4 sm:px-6 lg:px-[10%]">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center gap-5">
