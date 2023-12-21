@@ -141,6 +141,35 @@ export const collectionFeatured = [
     },
 ]
 
+export const fliterButtonList = [
+    {
+        name: "All Categories",
+    },
+    {
+        name: "Art"
+    },
+    {
+        name: "Celebrities"
+
+    },
+    {
+        name: "Gaming"
+
+    },
+    {
+        name: "Sport"
+
+    },
+    {
+        name: "Music"
+
+    },
+    {
+        name: "Crypto"
+
+    }
+]
+
 
 export const cardData = [
     {
@@ -201,7 +230,8 @@ export const cardData = [
     }
 ]
 
-export const marketPlace  = [
+
+export const marketPlace = [
     {
         name: "All NFTs",
         link: "/"
