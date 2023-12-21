@@ -7,8 +7,9 @@ module.exports = {
     colors: {
       ...colors,
       'primary' : '#3D00B7',
-      'secondary' : '#fccd03',
-      'tertiary' : '#F4F4F4'
+      'secondary' : '#ECECEC',
+      'tertiary' : '#565656',
+      'green' : "#00AC4F"
     },
     fontFamily: {
       serif: ['Merriweather', 'serif'],

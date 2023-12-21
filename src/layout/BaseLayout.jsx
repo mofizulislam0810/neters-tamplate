@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 const BaseLayout = () => {
     return (
         <>
-            <div className="bg-[#ebf0f4]">
+            <div>
                 {/* <Header /> */}
                 <Outlet />
                 <Footer />

@@ -1,12 +1,15 @@
 import React from 'react'
 
-const PersonWithText = ({ img, text }) => {
+const PersonWithText = ({ img, text, subtext, color }) => {
     return (
-        <div className='flex gap-4 items-center py-2'>
-            <div className='rounded-full p-1 bg-white'>
-                <img src={img} className="w-10 h-10" alt="person" />
+        <div className='flex gap-2 items-center py-2'>
+            <div className='rounded-full p-1'>
+                <img src={img} className="w-14 h-14" alt="person" />
             </div>
-            <p className='text-xl text-white'>{text}</p>
+            <div>
+                <p className={`text-xl ${color}`}>{text}</p>
+                <p className='text-xs'>{subtext}</p>
+            </div>
         </div>
     )
 }
