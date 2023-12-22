@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const TypeOptionsTab = ({ options, setData, data }) => {
-    useEffect(() => {
-        setData(options[0]?.name)
-    }, [])
     return (
         <ul className="flex flex-wrap justify-start">
             {

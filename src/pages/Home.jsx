@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Button, PersonWithText, TextWithIcon, TypeOptionsTab } from '../components'
+import { Button, NftsCard, PersonWithText, TextWithIcon, TypeOptionsTab } from '../components'
 import { amazingNetArt, cardData, collectionFeatured, fliterButtonList, images, live_acrion_images, profileImage, subscriptions, topCollectionsBigImages, topCollectionsOver } from '../constants'
 
 const Home = () => {
   const commonStyle = "grid-cols-1 my-10 py-10 mx-auto px-4 sm:px-6 lg:px-[10%]"
+
   const [filterButton, setFilterButton] = useState(fliterButtonList[0]?.name);
   return (
     <div>
@@ -89,37 +90,36 @@ const Home = () => {
 
         {/* Grid Images*/}
         <div className='grid grid-cols-1 gap-1 border-r-2 border-secondary'>
-          <div className='grid grid-cols-1 lg:grid-cols-3  gap-3 justify-between items-start'>
-            {
-              [1, 2, 3].map((item, idx) => {
-                return (
-                  <>
-                    <img src={topCollectionsBigImages[idx + 1]} alt="name" className='w-full' />
-                    <div className='col-span-2'>
-                      <p className='text-sm font-bold'>The Futr Abstr</p>
-                      <div className='flex flex-wrap py-2 gap-3 items-center'>
-                        <img src={profileImage[0]} className="w-10 h-10 rounded-full" alt="person" />
-                        <div className='flex gap-1 items-center border-2 px-3 py-1 rounded-lg border-green font-bold text-green'>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
-                            <g clipPath="url(#clip0_0_224)">
-                              <path d="M8.31533 7.13126L4.26566 9.66876L0.213318 7.13126L4.26566 0L8.31533 7.13126ZM4.26566 10.4836L0.213318 7.9461L4.26566 14L8.318 7.9461L4.26566 10.4836Z" fill="#00AC4F" />
-                            </g>
-                            <defs>
-                              <clipPath id="clip0_0_224">
-                                <rect width="8.53125" height="14" fill="white" />
-                              </clipPath>
-                            </defs>
-                          </svg> 0.25 ETH
-                        </div>
-                        <p className='text-xs text-tertiary'>1 of 8</p>
+          {
+            [1, 2, 3].map((item, idx) => {
+              return (
+                <div className='grid grid-cols-1 lg:grid-cols-3  gap-3 justify-between items-start' key={idx}>
+                  <img src={topCollectionsBigImages[idx + 1]} alt="name" className='w-full' />
+                  <div className='col-span-2'>
+                    <p className='text-sm font-bold'>The Futr Abstr</p>
+                    <div className='flex flex-wrap py-2 gap-3 items-center'>
+                      <img src={profileImage[0]} className="w-10 h-10 rounded-full" alt="person" />
+                      <div className='flex gap-1 items-center border-2 px-3 py-1 rounded-lg border-green font-bold text-green'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="14" viewBox="0 0 9 14" fill="none">
+                          <g clipPath="url(#clip0_0_224)">
+                            <path d="M8.31533 7.13126L4.26566 9.66876L0.213318 7.13126L4.26566 0L8.31533 7.13126ZM4.26566 10.4836L0.213318 7.9461L4.26566 14L8.318 7.9461L4.26566 10.4836Z" fill="#00AC4F" />
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_0_224">
+                              <rect width="8.53125" height="14" fill="white" />
+                            </clipPath>
+                          </defs>
+                        </svg> 0.25 ETH
                       </div>
-                      <Button type={"submit"} btnName={"Place a bid"} size={"w-30 py-2"} bg={idx === 0 ? true : false} />
+                      <p className='text-xs text-tertiary'>1 of 8</p>
                     </div>
-                  </>
-                )
-              })
-            }
-          </div>
+                    <Button type={"submit"} btnName={"Place a bid"} size={"w-30 py-2"} bg={idx === 0 ? true : false} />
+                  </div>
+                </div>
+              )
+            })
+          }
+
         </div>
 
         {/* Top Collections over */}
@@ -129,7 +129,7 @@ const Home = () => {
           {
             topCollectionsOver?.map((item, idx) => {
               return (
-                <div className={`${idx < 4 && "border-b-2"} flex flex-wrap gap-1 items-center justify-between py-3`}>
+                <div className={`${idx < 4 && "border-b-2"} flex flex-wrap gap-1 items-center justify-between py-3`} key={idx}>
                   <p className='text-base font-extrabold w-3'>{idx + 1}</p>
                   <div className='w-18'>
                     <img src={item?.image} className="w-16 h-16 rounded-full" alt="person" />
@@ -162,58 +162,52 @@ const Home = () => {
 
       {/* Collection Featured NFTs */}
       <div className='bg-secondary'>
-        <p className={`text-4xl text-black font-black leading-none ${commonStyle}`}>COLLECTION FEATURED NFT</p>
-        <div className={`grid gap-5 lg:grid-cols-3 mx-auto px-4 sm:px-6 lg:px-[10%]`}>
-          {
-            collectionFeatured?.map((item, idx) => {
-              return (
-                <div key={idx}>
-                  <div className='grid gap-3 lg:grid-cols-3 grid-cols-1'>
-                    <div className='lg:col-span-2'>
-                      <img className='w-full h-[300px]' src={item.bigImages} alt="layer-img-01" />
-
-                    </div>
-                    <div className='grid grid-cols-1 gap-2 items-center'>
-                      <img className='w-full h-[95px]' src={item.imageOne} alt="layer-img-01" />
-                      <img className='w-full h-[95px]' src={item.imageTwo} alt="layer-img-01" />
-                      <img className='w-full h-[95px]' src={item.imageThree} alt="layer-img-01" />
-                    </div>
-                  </div>
-                  <div className='py-5 flex flex-wrap justify-between items-center'>
-                    <div>
-                      <p className='text-xl font-bold leading-3'>Amazing Collection</p>
-                      <div className='flex gap-2 items-center py-2'>
-                        <div className='rounded-full p-1'>
-                          <img src={profileImage[0]} className="w-10 h-10" alt="person" />
-                        </div>
-                        <div>
-                          <p className="text-black text-xs">by Arkhan</p>
-                        </div>
+        <div className="py-10 mx-auto px-4 sm:px-6 lg:px-[10%]">
+          <p className="text-4xl text-black font-black leading-none pb-10">COLLECTION FEATURED NFT</p>
+          <div className={`grid gap-5 lg:grid-cols-3`}>
+            {
+              collectionFeatured?.map((item, idx) => {
+                return (
+                  <div key={idx}>
+                    <div className='grid gap-3 lg:grid-cols-3 grid-cols-1'>
+                      <div className='lg:col-span-2'>
+                        <img className='w-full h-[300px]' src={item.bigImages} alt="layer-img-01" />
+                      </div>
+                      <div className='grid grid-cols-1 gap-2 items-center'>
+                        <img className='w-full lg:h-[95px] h-full' src={item.imageOne} alt="layer-img-01" />
+                        <img className='w-full lg:h-[95px] h-full' src={item.imageTwo} alt="layer-img-01" />
+                        <img className='w-full lg:h-[95px] h-full' src={item.imageThree} alt="layer-img-01" />
                       </div>
                     </div>
-                    <div>
+                    <div className='py-5 flex flex-wrap justify-between items-center'>
+                      <div>
+                        <p className='text-xl font-bold leading-3'>Amazing Collection</p>
+                        <div className='flex gap-2 items-center py-2'>
+                          <div className='rounded-full p-1'>
+                            <img src={profileImage[0]} className="w-10 h-10" alt="person" />
+                          </div>
+                          <div>
+                            <p className="text-black text-xs">by Arkhan</p>
+                          </div>
+                        </div>
+                      </div>
                       <Button type={"submit"} btnName={"Total 54 Items"} size={"w-30"} bg={false} />
                     </div>
                   </div>
-                </div>
-              )
-            })
-          }
+                )
+              })
+            }
+          </div>
         </div>
       </div>
 
-
       {/* CREATE AND SELL YOUR NFTS */}
-      <div className={`grid gap-5 items-center justify-between lg:grid-cols-2 grid-cols-1 ${commonStyle}`}>
+      <div className={`grid gap-8 items-center justify-between lg:grid-cols-2 grid-cols-1 ${commonStyle}`}>
 
         {/* left position */}
-        <div className='grid gap-6 items-center justify-center lg:grid-flow-col lg:grid-cols-2 grid-cols-1 my-10 py-10'>
-          <div>
-            <SellNets img={images.image_one} profileImage={profileImage[0]} size={'w-full h-full'} />
-          </div>
-          <div>
-            <SellNets img={images.image_two} profileImage={profileImage[1]} size={'w-[200px] h-full'} position={"flex justify-end"} />
-          </div>
+        <div className='grid gap-8 items-center justify-center lg:grid-flow-col lg:grid-cols-2 grid-cols-1 my-10 py-10'>
+          <SellNets img={images.image_one} profileImage={profileImage[0]} size={'w-full h-full'} />
+          <SellNets img={images.image_two} profileImage={profileImage[1]} size={'md:w-[200px] sm:w-full h-full'} position={"flex justify-end"} />
           <div className="lg:row-span-2">
             <SellNets img={images.image_three} profileImage={profileImage[1]} size={'w-full h-full'} />
           </div>
@@ -249,54 +243,14 @@ const Home = () => {
               </svg>All Filters
             </button>
           </div>
-
           <div className='grid gap-5 lg:grid-cols-4 grid-cols-1'>
             {
               cardData?.map((item, idx) => {
                 return (
-                  <div className="w-full flex-shrink-0 relative overflow-hidden bg-white rounded-xl shadow-lg" key={idx}>
-                    <div className='p-2'>
-                      <div className="relative flex items-center justify-center">
-                        <img className="rounded-xl object-cover h-72 w-72" src={item.image} alt="sepcial images" />
-                        <div className='absolute -bottom-5 left-5 flex'>
-                          <div className="z-0 -mr-3"><img src={profileImage[0]} className="w-10 h-10 rounded-full" alt="person" /></div>
-                          <div className="z-10 -mr-3"><img src={profileImage[1]} className="w-10 h-10 rounded-full" alt="person" /></div>
-                          <div className="z-20 -mr-3"><img src={profileImage[2]} className="w-10 h-10 rounded-full" alt="person" /></div>
-                          <div className="z-30 -mr-3"><img src={profileImage[3]} className="w-10 h-10 rounded-full" alt="person" /></div>
-                        </div>
-                      </div>
-                      <div className="relative mt-6 px-2">
-                        <div className="flex justify-between items-center py-3">
-                          <div>
-                            <p className="text-base font-bold text-black">{item.header}</p>
-                            <div className='flex gap-3 items-center text-green font-bold py-1'>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16" fill="none">
-                                <g clipPath="url(#clip0_402_127)">
-                                  <path d="M9.24746 8.15568L4.80473 10.9395L0.35907 8.15568L4.80473 0.332275L9.24746 8.15568ZM4.80473 11.8334L0.35907 9.04961L4.80473 15.6911L9.25038 9.04961L4.80473 11.8334V11.8334Z" fill="#00AC4F" />
-                                </g>
-                                <defs>
-                                  <clipPath id="clip0_402_127">
-                                    <rect width="9.35928" height="15.3588" fill="white" transform="translate(0.125 0.332275)" />
-                                  </clipPath>
-                                </defs>
-                              </svg>
-                              <p className="text-sm text-green">0.25 ETH</p>
-                            </div>
-                          </div>
-                          <span className="block font-semibold text-xs text-tertiary">1 of 321</span>
-                        </div>
-                        <div className="flex justify-between border-t-2 py-3 text-primary">
-                          <span className="bg-secondary rounded-full text-xs font-bold px-3 py-2 leading-none flex items-center">3h 50m 2s left</span>
-                          <span className="block font-semibold text-lg">Place a bid</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <NftsCard item={item} profileImage={profileImage} key={idx} />
                 )
               })
             }
-
-
           </div>
           <div className='flex justify-center py-10'>
             <Button type={"submit"} btnName={"More NFTs"} size={"w-30 py-3"} bg={false} />
@@ -343,7 +297,7 @@ const SellNets = ({ img, profileImage, size, position }) => {
   return (
     <div className={`relative ${position}`}>
       <img src={img} alt="name" className={size} />
-      <img src={profileImage} className="w-18 h-18 rounded-full absolute -bottom-5 -right-5" alt="person" />
+      <img src={profileImage} className="w-18 h-18 rounded-full absolute md:-bottom-5 md:-right-5 -bottom-3 -right-3" alt="person" />
     </div>
   )
 }

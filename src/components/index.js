@@ -3,6 +3,7 @@ import SearchBox from './SearchBox'
 import TextWithIcon from './TextWithIcon'
 import PersonWithText from './PersonWithText'
 import TypeOptionsTab from './TypeOptionsTab'
+import NftsCard from './NftsCard'
 
 
 export {
@@ -10,5 +11,6 @@ export {
     SearchBox,
     TextWithIcon,
     PersonWithText,
-    TypeOptionsTab
+    TypeOptionsTab,
+    NftsCard
 }
